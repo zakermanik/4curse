@@ -1,9 +1,11 @@
 <template>
   <el-form :model="queryParams" class="w-[1024px]">
+    <el-form-item>
+      <div class="flex justify-center w-full">
+        <el-input size="large" class="w-[500px]" v-model="queryParams.query" placeholder="Please input" clearable :suffix-icon="Search" />
+      </div>
+    </el-form-item>
     <div class="flex gap-2">
-      <el-form-item>
-        <el-input class="w-[600px]" v-model="queryParams.query" placeholder="Please input" clearable :suffix-icon="Search" />
-      </el-form-item>
       <el-form-item>
         <el-select class="w-[100px]" v-model="queryParams.cuisine" placeholder="Cuisine" clearable>
           <el-option v-for="cuisine in cuisines" :label="cuisine.label" :value="cuisine.label.toLowerCase()"></el-option>
@@ -16,8 +18,6 @@
           <el-checkbox-button label="vegan">Vegan</el-checkbox-button>
         </el-checkbox-group>
       </el-form-item>
-    </div>
-    <div class="flex gap-2">
       <el-form-item>
         <el-input v-model="queryParams.equipment" placeholder="Equipment" clearable />
       </el-form-item>

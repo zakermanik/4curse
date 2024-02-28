@@ -1,7 +1,7 @@
 <template>
   <div class="px-10 pt-8">
     <el-container>
-      <el-header class="h-[150px]">
+      <el-header class="flex h-[150px] justify-center">
         <SearchMenu />
       </el-header>
       <el-container>
