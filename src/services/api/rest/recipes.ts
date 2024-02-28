@@ -27,18 +27,3 @@ export const fetchRecipes = (ids: string) =>
             "x-api-key": apiKey,
         },
     });
-export const fetchSearchRecipes = (query: string, offset: number, number: number, diet: string, cuisine: string) =>
-    makeRequest({
-        url: `https://api.spoonacular.com/recipes/complexSearch`,
-        method: "GET",
-        params: {
-            query,
-            offset,
-            number,
-            diet,
-            cuisine,
-        },
-        headers: {
-            "x-api-key": apiKey,
-        },
-    });

@@ -3,5 +3,8 @@ export interface IRecipeItem {
     title: string,
     summary: string,
     image: string,
-    dishType: string;
+    dishType: string[],
+    readyInMinutes: number,
+    servings: number,
+    instructions: string,
 }

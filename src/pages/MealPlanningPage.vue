@@ -3,7 +3,7 @@
         Meal Planning
     </h1>
     <router-view></router-view>
-    <div class="p-[200px]">
+    <div class="w-[100px]">
         <el-input></el-input>
         <el-button>Generate Meal Plan</el-button>
     </div>

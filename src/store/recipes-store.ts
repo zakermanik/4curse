@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia';
 import { IRecipeItem } from '../interfaces/IRecipeItem';
-import { recipes } from '../services/api';
+import { complexSearchParams } from '../interfaces/IQueryParams';
+import { recipes, search } from '../services/api';
 
 export const useRecipesStore = defineStore("recipes-store", {
   state: () => ({
-    recipe: {},
+    recipe: {} as IRecipeItem,
     recipe_ID: 0 as number,
     recipes: [] as IRecipeItem[],
     searchingRecipes: [] as IRecipeItem[],
@@ -78,10 +79,10 @@ export const useRecipesStore = defineStore("recipes-store", {
         }, 1000);
       }
     },
-    async getSearchRecipes(query: string, offset: number, number: number, diet: string, cuisine: string) {
+    async getSearchRecipes(queryParams: complexSearchParams) {
       this.isLoadingSearchRecipe = true;
       try {
-        const { data } = await recipes.fetchSearchRecipes(query, offset, number, diet, cuisine);
+        const { data } = await search.fetchSearchRecipes(queryParams);
         this.searchingRecipes = data.results.map((recipeData: any) => ({
           id: recipeData.id,
           title: recipeData.title,
@@ -97,6 +98,26 @@ export const useRecipesStore = defineStore("recipes-store", {
           this.isLoadingSearchRecipe = false;
         }, 1000);
       }
-    }
+    },
+    // async getSearchRecipesByIngredients(ingredients: string, number: number, limitLicense: boolean, ranking: number, ignorePantry: boolean) {
+    //   this.isLoadingSearchRecipe = true;
+    //   try {
+    //     const { data } = await search.fetchSearchRecipesByIngredients(ingredients, number, limitLicense, ranking, ignorePantry);
+    //     this.searchingRecipes = data.results.map((recipeData: any) => ({
+    //       id: recipeData.id,
+    //       title: recipeData.title,
+    //       image: recipeData.image,
+    //     }));
+    //     this.totalResults = data.totalResults;
+    //     return this.searchingRecipes;
+    //   } catch (error: any) {
+    //     console.error('Ошибка в поиске рецептов: ', error.message);
+    //     throw error;
+    //   } finally {
+    //     setTimeout(() => {
+    //       this.isLoadingSearchRecipe = false;
+    //     }, 1000);
+    //   }
+    // }
   },
 });
