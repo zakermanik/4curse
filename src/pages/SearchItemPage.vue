@@ -1,6 +1,6 @@
 <template>
-  <el-scrollbar class="h-[720px]">
-    <div class="list-item">
+  <el-scrollbar class="h-[720px] w-[684px]">
+    <div class="flex justify-normal">
       <div class="list-item-main" v-show="!recipesStore.isLoadingOneRecipe">
         <div class="list-item-info">
           <h2>{{ recipesStore.recipe.title }}</h2>
@@ -14,7 +14,7 @@
           <img :src="recipesStore.recipe.image" alt="Recipe Image" />
         </div>
       </div>
-      <div v-show="recipesStore.isLoadingOneRecipe" style="width:70%">
+      <div v-show="recipesStore.isLoadingOneRecipe">
         <el-skeleton style="" animated>
           <template #template>
             <div class="skelet-info">
@@ -41,7 +41,7 @@
               <el-skeleton-item variant="text" style="width: 60%;" />
             </div>
             <div class="skelet-info-img">
-              <el-skeleton-item variant="image" style="width: 100%; height: 400px;" />
+              <el-skeleton-item variant="image" style="height: 220px;" />
             </div>
           </template>
         </el-skeleton>
@@ -83,16 +83,11 @@ const fetchRecipe = async (id: number) => {
 </script>
 
 <style lang="scss" scoped>
-.list-item {
-  display: flex;
-  justify-content: center;
-
   .list-item-main {
 
     background-color: white;
     align-items: flex-start;
     justify-content: space-between;
-    width: 70%;
     border-radius: 10px;
     display: flex;
     padding: 10px;
@@ -115,7 +110,6 @@ const fetchRecipe = async (id: number) => {
       }
     }
   }
-}
 
 s .list-item-main:hover {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
@@ -126,7 +120,6 @@ s .list-item-main:hover {
   gap: 20px;
 
   .skelet-info {
-    width: 50%;
     display: flex;
     flex-direction: column;
     padding: 14px;
@@ -134,7 +127,7 @@ s .list-item-main:hover {
   }
 
   .skelet-info-img {
-    width: 50%;
+    width: 320px;
   }
 }
 </style>

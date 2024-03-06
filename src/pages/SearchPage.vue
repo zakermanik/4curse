@@ -1,20 +1,20 @@
 <template>
-  <div class="px-10 pt-8">
-    <el-container>
-      <el-header class="flex h-[150px] justify-center">
+  <div class="flex justify-center px-10 pt-8">
+    <div class="w-[1024px]">
+      <el-header class="flex h-[150px]">
         <SearchMenu />
       </el-header>
-      <el-container>
-        <el-aside class="w-[340px]">
+      <div class="flex">
+        <div class="w-[340px]">
           <el-scrollbar class="h-[720px]">
             <RecipeListSearch :recipes="recipesStore.searchingRecipes" />
           </el-scrollbar>
-        </el-aside>
-        <el-main class="p-0">
+        </div>
+        <el-main class="p-0 w-[648px]">
           <router-view></router-view>
         </el-main>
-      </el-container>
-    </el-container>
+      </div>
+    </div>
   </div>
 </template>
 <script setup lang="ts">

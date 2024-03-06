@@ -8,3 +8,9 @@ export interface complexSearchParams {
     includeIngredients?: string
     excludeIngredients?: string
 }
+export interface generateMealParams {
+    timeFrame: string
+    targetCalories: number
+    diet: string
+    exclude: string
+}

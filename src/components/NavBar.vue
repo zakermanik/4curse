@@ -14,8 +14,9 @@
             </el-menu>
     </nav>
 </template>
-<script >
-
+<script setup lang="ts">
+let lol = 1
+lol++
 </script>
 <style lang="">
     
